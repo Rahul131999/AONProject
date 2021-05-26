@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title></title>
+</head>
+<body>
+<style>
+ 
+ td {
+        width: 2000px;
+        text-align: center;
+       
+        padding: 5px;
+      }
+</style>
+<table>
+  <thead>
+    <tr>
+       
+    </tr>
+    </thead>    
+    <tbody>
+    {% for row in data %}  
+     <tr>
+            <td>
+                
+                <div style='float: center; text-align: center'>{{row[1]}}</div>
+				</td>
+            </tr>  
+    {% if row[5]=="SENT" %}
+    
+    
+            <tr>
+            {% if row[3]=="PAY" %}
+            <td>
+                
+                <div style='float: right; text-align: left'>"You Paid"</div>
+				</td>
+            
+            {% else %}
+            <td>
+                
+                <div style='float: right; text-align: left'>"You Requested"</div>
+                <div style='float: right; text-align: left'>
+                <button type="button" align='right'>Cancel</button>
+                </div>
+				</td>
+            {% endif %}
+            </tr>
+             <tr>
+            <td>
+                
+                <div style='float: right; text-align: left'>{{row[4]}}</div>
+				<div style='float: right; text-align: left'>"Amount"</div>
+				</td>
+            </tr>
+            <tr>
+                <td>
+                 <div style='float: right; text-align: right'>{{row[0]}}</div>
+                
+                <div style='float: right; text-align: left'>"transaction ID"</div>
+               
+				</td>
+            </tr>
+            {% else %}
+             <tr>
+             {% if row[3]=="PAY" %}
+            <td>
+                
+                <div style='float: left; text-align: left'>"You Received"</div>
+				</td>
+            
+            {% else %}
+            <td>
+                
+                <div style='float: left; text-align: left'>"Request Received"</div>
+                 <div style='float: left; text-align: left'>
+                <button type="button">Pay</button>
+                <button type="button">Decline</button>
+                </div>
+				</td>
+            {% endif %}
+           
+            </tr>
+             <tr>
+            <td>
+            
+				<div style='float: left; text-align: left'>"Amount"</div>
+                
+                <div style='float: left; text-align: left'>{{row[4]}}</div>
+				</td>
+            </tr>
+            <tr>
+                <td>
+                
+                <div style='float: left; text-align: left'>"transaction ID"</div>
+                 <div style='float: left; text-align: right'>{{row[0]}}</div>
+                
+               
+				</td>
+            </tr>
+            {% endif %}
+              {% endfor %}
+    
+    </tbody>
+</table>
+</body>
+</html>
